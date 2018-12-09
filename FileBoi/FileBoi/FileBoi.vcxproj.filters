@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\GUI">
+      <UniqueIdentifier>{c4b0e149-a385-46ed-be67-a410aa247c43}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Window.cpp">
@@ -24,6 +27,18 @@
     <ClCompile Include="FileBoi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Console.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -31,6 +46,18 @@
     </ClInclude>
     <ClInclude Include="FileBoi.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Source Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Source Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Console.h">
+      <Filter>Source Files\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Source Files\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
