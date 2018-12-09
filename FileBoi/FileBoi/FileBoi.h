@@ -1,5 +1,7 @@
 #pragma once
 #include "Window.h"
+#include "AssetManager.h"
+#include <string>
 
 class FileBoi
 {
@@ -19,6 +21,7 @@ private:
 
 
 	std::shared_ptr<Window> m_window;
+	std::shared_ptr<AssetManager> m_assetManager;
 	float m_deltaTime;
 	float m_FPS;
 	sf::Clock m_clock;

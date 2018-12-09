@@ -11,6 +11,9 @@ void FileBoi::Init()
 	this->m_deltaTime = 0.0f;
 	this->m_FPS = 60.0f;
 
+	this->m_assetManager = std::make_shared<AssetManager>();
+	this->m_assetManager->LoadFont("OpenSans-Regular", "OpenSans-Regular.ttf");
+
 	//-- Testing
 	shape.setRadius((100.f));
 	shape.setFillColor(sf::Color::Green);
