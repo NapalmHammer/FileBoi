@@ -5,8 +5,3 @@
 Console::Console()
 {
 }
-
-
-Console::~Console()
-{
-}

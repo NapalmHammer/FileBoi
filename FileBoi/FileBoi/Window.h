@@ -12,4 +12,5 @@ public:
 private:
 	// To do - Add functionality to window, like resizing+
 	std::shared_ptr<sf::RenderWindow> m_window;
+	const int FPS;
 };

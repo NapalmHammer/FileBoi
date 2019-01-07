@@ -1,7 +1,13 @@
 #pragma once
-#include "Window.h"
-#include "AssetManager.h"
+#include <iostream>
 #include <string>
+#include "SharedApplicationData.h"
+#include "Button.h"
+
+//-- testing
+void Print();
+
+//--
 
 class FileBoi
 {
@@ -13,20 +19,16 @@ public:
 	void Process(const float &deltatime);
 	void Present(const float &deltatime);
 
+
 private:
-	//-- Need Network module
+	//-- Approved members
 
-
-	//-- Need GUI module
-
-
-	std::shared_ptr<Window> m_window;
-	std::shared_ptr<AssetManager> m_assetManager;
+	std::shared_ptr<ShareableApplicationData> m_data;
 	float m_deltaTime;
 	float m_FPS;
 	sf::Clock m_clock;
 
-	//-- Testing area
+	//-- Testing members
+	std::shared_ptr<ConnectButton> ConBut;
 	sf::CircleShape shape;
-
 };
