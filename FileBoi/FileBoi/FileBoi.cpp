@@ -15,30 +15,68 @@ void FileBoi::Init()
 	this->m_FPS = 60.0f;
 
 	this->m_data->SAD_assetManager->LoadFont("OpenSans-Regular", "OpenSans-Regular.ttf");
-
+	m_gui = std::make_unique<GUI>(sf::Rect<float>(100.0f, 100.0f, 400.0f, 400.0f), this->m_data);
 
 	//-- Testing
-	ConBut = std::make_shared<ConnectButton>(20.0f, 20.0f, 100.0f, 50.0f, sf::Color::Green, this->m_data);
+	ConBut = std::make_shared<ConnectButton>(sf::Rect<float>( 20.0f, 20.0f, 100.0f, 50.0f ), this->m_data, "Connect");
 	ConBut->SetFunc(Print);
-	shape.setRadius((100.f));
-	shape.setFillColor(sf::Color::Green);
+	//shape.setRadius((100.f));
+	//shape.setFillColor(sf::Color::Green);
 }
 
 void FileBoi::Go()
 {
 	while (this->m_data->SAD_window->GetWindow()->isOpen())
 	{
-		sf::Event event;
 		this->m_deltaTime = this->m_clock.restart().asSeconds();
-
-		while (this->m_data->SAD_window->GetWindow()->pollEvent(event))
+		while (this->m_data->SAD_window->GetWindow()->pollEvent(this->m_data->SAD_event))
 		{
-			if (event.type == sf::Event::Closed)
-				this->m_data->SAD_window->GetWindow()->close();
+			HandleEvents(this->m_data->SAD_event);
 		}
+
 		this->Prepare(this->m_deltaTime);
 		this->Process(this->m_deltaTime);
 		this->Present(this->m_deltaTime);
+	}
+}
+
+void FileBoi::HandleEvents(sf::Event EVENT)
+{
+	switch (EVENT.type)
+	{
+	case sf::Event::Closed :
+	{
+		this->m_data->SAD_window->GetWindow()->close();
+		break;
+	}
+	case sf::Event::MouseButtonPressed :
+	{
+		if (EVENT.mouseButton.button == sf::Mouse::Left)
+		{
+			if (!this->m_data->SAD_ms.GetClicked(sf::Mouse::Left))
+			{
+				this->m_data->SAD_ms.Clicked(sf::Mouse::Left);
+			}
+			std::cout << "left mouse pressed \n";
+		}
+		break;
+	}
+	case sf::Event::MouseButtonReleased :
+	{
+		if (EVENT.mouseButton.button == sf::Mouse::Left)
+		{
+			if (this->m_data->SAD_ms.GetClicked(sf::Mouse::Left))
+			{
+				this->m_data->SAD_ms.Released(sf::Mouse::Left);
+			}
+			std::cout << "left mouse released \n";
+		}
+		break;
+	}
+	default:
+	{
+		break;
+	}
 	}
 }
 
@@ -50,16 +88,18 @@ void FileBoi::Prepare(const float &deltatime)
 void FileBoi::Process(const float &deltatime)
 {
 	ConBut->Update();
+	m_gui->Update();
 }
 
 void FileBoi::Present(const float &deltatime)
 {
 	ConBut->Draw();
+	m_gui->Draw();
 	//this->m_window->Draw(shape);
 	this->m_data->SAD_window->GetWindow()->display();
 }
 
 void Print()
 {
-	std::cout << "function pointer works" << "\n";
+	std::cout << "[FUCNTION PTR]Test example." << "\n";
 }

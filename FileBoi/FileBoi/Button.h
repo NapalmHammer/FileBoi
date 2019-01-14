@@ -7,24 +7,23 @@
 class Button
 {
 public:
-	virtual void Update() = 0;
-	virtual void OnPress() = 0;
-	virtual void Draw() = 0;
+	Button(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname);
+	virtual void Update();
+	virtual void OnPress() {};
+	virtual void Draw();
 protected:
-	std::string m_title;
 	sf::RectangleShape m_rect;
+	sf::Text m_text;
+	std::shared_ptr<ShareableApplicationData> m_SAD;
 };
 
 class ConnectButton: public Button
 {
 public:
-	ConnectButton(float top, float left, float width, float height, sf::Color color, std::shared_ptr<ShareableApplicationData>& SAD);
-	void Update();
-	void OnPress();
-	void Draw();
+	ConnectButton(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname);
+	void OnPress() override;
 	void SetFunc(void(*fcnPtr)()){FP = fcnPtr;}
 private:
 	void(*FP)();
-	std::shared_ptr<ShareableApplicationData> m_SAD;
 };
 

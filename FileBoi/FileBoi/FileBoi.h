@@ -3,6 +3,7 @@
 #include <string>
 #include "SharedApplicationData.h"
 #include "Button.h"
+#include "GUI.h"
 
 //-- testing
 void Print();
@@ -15,6 +16,7 @@ public:
 	FileBoi();
 	void Init();
 	void Go();
+	void HandleEvents(sf::Event EVENT);
 	void Prepare(const float &deltatime);
 	void Process(const float &deltatime);
 	void Present(const float &deltatime);
@@ -31,4 +33,5 @@ private:
 	//-- Testing members
 	std::shared_ptr<ConnectButton> ConBut;
 	sf::CircleShape shape;
+	std::unique_ptr<GUI> m_gui;
 };
