@@ -6,8 +6,7 @@ GUI::GUI(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD)
 	this->m_irect = rect;
 	float temp = rect.height / 3.0f;
 	m_buttons.emplace_back(std::make_unique<ConnectButton>(sf::Rect<float>(m_irect.left, m_irect.top			, m_irect.width, temp - 2.0f ), m_SAD, "Connect"));
-	m_buttons.emplace_back(std::make_unique<ConnectButton>(sf::Rect<float>(m_irect.left, m_irect.top + temp		, m_irect.width, temp - 2.0f ), m_SAD, "Disconnect"));
-	m_buttons.emplace_back(std::make_unique<ConnectButton>(sf::Rect<float>(m_irect.left, m_irect.top + temp * 2	, m_irect.width, temp - 2.0f ), m_SAD, "File Stuff"));
+	m_buttons.emplace_back(std::make_unique<DisconnectButton>(sf::Rect<float>(m_irect.left, m_irect.top + temp		, m_irect.width, temp - 2.0f ), m_SAD, "Disconnect"));
 }
 
 void GUI::Update()

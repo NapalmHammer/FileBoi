@@ -9,7 +9,6 @@ Button::Button(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& 
 	this->m_rect.setPosition(rect.left, rect.top);
 	this->m_rect.setSize({ rect.width, rect.height });
 
-	//this->m_SAD->SAD_assetManager->LoadFont("OpenSans-Regular", "OpenSans-Regular.ttf");
 	this->m_text.setFont(this->m_SAD->SAD_assetManager->GetFont("OpenSans-Regular"));
 	this->m_text.setString(buttonname);
 	this->m_text.setFillColor(sf::Color(0, 0, 0, 255));
@@ -44,12 +43,20 @@ void Button::Draw()
 
 ConnectButton::ConnectButton(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname)
 	:Button(rect, SAD, buttonname)
-{
-}
+{}
 
 void ConnectButton::OnPress()
 {
 	std::cout << "[Connect BUTTON]Connect." << "\n";
 	this->m_SAD->m_net.Connect("127.0.0.1", 53000);
-	//FP();
+}
+
+DisconnectButton::DisconnectButton(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname)
+	:Button(rect, SAD, buttonname)
+{}
+
+void DisconnectButton::OnPress()
+{
+	std::cout << "[Disconnect BUTTON]Disconnect." << "\n";
+	this->m_SAD->m_net.Disconect();
 }

@@ -18,10 +18,6 @@ void FileBoi::Init()
 	m_gui = std::make_unique<GUI>(sf::Rect<float>(100.0f, 100.0f, 400.0f, 400.0f), this->m_data);
 
 	//-- Testing
-	ConBut = std::make_shared<ConnectButton>(sf::Rect<float>( 20.0f, 20.0f, 100.0f, 50.0f ), this->m_data, "Connect");
-	//ConBut->SetFunc(m_data->m_net.Connect);
-	//shape.setRadius((100.f));
-	//shape.setFillColor(sf::Color::Green);
 }
 
 void FileBoi::Go()
@@ -57,7 +53,7 @@ void FileBoi::HandleEvents(sf::Event EVENT)
 			{
 				this->m_data->SAD_ms.Clicked(sf::Mouse::Left);
 			}
-			std::cout << "left mouse pressed \n";
+			//std::cout << "left mouse pressed \n";
 		}
 		break;
 	}
@@ -69,7 +65,7 @@ void FileBoi::HandleEvents(sf::Event EVENT)
 			{
 				this->m_data->SAD_ms.Released(sf::Mouse::Left);
 			}
-			std::cout << "left mouse released \n";
+			//std::cout << "left mouse released \n";
 		}
 		break;
 	}
@@ -87,20 +83,12 @@ void FileBoi::Prepare(const float &deltatime)
 
 void FileBoi::Process(const float &deltatime)
 {
-	ConBut->Update();
 	m_gui->Update();
 	m_data->m_net.Update();
 }
 
 void FileBoi::Present(const float &deltatime)
 {
-	ConBut->Draw();
 	m_gui->Draw();
-	//this->m_window->Draw(shape);
 	this->m_data->SAD_window->GetWindow()->display();
-}
-
-void Print()
-{
-	std::cout << "[FUCNTION PTR]Test example." << "\n";
 }

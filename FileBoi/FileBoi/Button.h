@@ -22,8 +22,13 @@ class ConnectButton: public Button
 public:
 	ConnectButton(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname);
 	void OnPress() override;
-	//void SetFunc(void(Network::*fcnPtr)(sf::IpAddress address, sf::Int32 port)){FP = fcnPtr;}
 private:
-	//void (Network::*FP)(sf::IpAddress address, sf::Int32 port);
 };
 
+class DisconnectButton : public Button
+{
+public:
+	DisconnectButton(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname);
+	void OnPress() override;
+private:
+};

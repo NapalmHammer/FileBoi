@@ -17,7 +17,7 @@ public:
 	Network();
 	~Network();
 	void Connect(sf::IpAddress address, sf::Int32 port);
-	void Disconenct();
+	void Disconect();
 	void Update();
 	//void HandlePacket();
 

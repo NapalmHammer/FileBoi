@@ -33,7 +33,7 @@ void Network::Connect(sf::IpAddress address, sf::Int32 port)
 
 }
 
-void Network::Disconenct()
+void Network::Disconect()
 {
 	m_client.disconnect();
 	std::cout << "Disconnected \n";

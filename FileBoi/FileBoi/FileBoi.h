@@ -6,7 +6,6 @@
 #include "GUI.h"
 
 //-- testing
-void Print();
 
 //--
 
@@ -29,9 +28,7 @@ private:
 	float m_deltaTime;
 	float m_FPS;
 	sf::Clock m_clock;
+	std::unique_ptr<GUI> m_gui;
 
 	//-- Testing members
-	std::shared_ptr<ConnectButton> ConBut;
-	sf::CircleShape shape;
-	std::unique_ptr<GUI> m_gui;
 };
