@@ -25,7 +25,6 @@ private:
 	FileTransferData m_fileData;
 	sf::TcpListener m_listener;
 	sf::TcpSocket m_client;
-	sf::TcpSocket m_sender;
 	sf::Int32 m_bufferSize = 16384;
 	NetworkStatus m_status = NetworkStatus::NotConnected;
 };

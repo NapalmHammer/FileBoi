@@ -5,8 +5,8 @@
 Network::Network()
 {
 	m_listener.setBlocking(false);
+	m_listener.listen(53000);
 	m_client.setBlocking(false);
-	m_sender.setBlocking(false);
 }
 
 Network::~Network()
@@ -15,19 +15,26 @@ Network::~Network()
 
 void Network::Connect(sf::IpAddress address, sf::Int32 port)
 {
-	if (!this->m_sender.connect(address, port))
+	if (this->m_client.getRemoteAddress() == sf::IpAddress::None)
 	{
-		std::cout << "Could not connect to address: " + address.toString() + "\n";
+		if (!this->m_client.connect(address, port))
+		{
+			std::cout << "Could not connect to address: " + address.toString() + "\n";
+		}
+		else
+		{
+			std::cout << "Connected to address: " + address.toString() + "\n";
+		}
 	}
-	else
+	else 
 	{
-		std::cout << "Connected to address: " + address.toString() + "\n";
+		std::cout << "Socket Already connected: " + address.toString() + "\n";
 	}
+
 }
 
 void Network::Disconenct()
 {
-	m_sender.disconnect();
 	m_client.disconnect();
 	std::cout << "Disconnected \n";
 
@@ -35,6 +42,7 @@ void Network::Disconenct()
 
 void Network::Update()
 {
+	//std::cout << (int)m_status << "\n";
 	switch (m_status)
 	{
 		case NetworkStatus::Connected :
@@ -43,6 +51,17 @@ void Network::Update()
 		}
 		case NetworkStatus::NotConnected :
 		{
+			if (m_listener.accept(m_client) != sf::Socket::Done)
+			{
+				std::cout << "line 46 network.cpp \n";
+				break;
+			}
+			else 
+			{
+				std::cout << "Someone has connected to you. \n";
+				m_status = NetworkStatus::Connected;
+				break;
+			}
 			break;
 		}
 		case NetworkStatus::Receiving :
