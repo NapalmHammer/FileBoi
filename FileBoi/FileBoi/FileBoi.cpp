@@ -19,7 +19,7 @@ void FileBoi::Init()
 
 	//-- Testing
 	ConBut = std::make_shared<ConnectButton>(sf::Rect<float>( 20.0f, 20.0f, 100.0f, 50.0f ), this->m_data, "Connect");
-	ConBut->SetFunc(Print);
+	//ConBut->SetFunc(m_data->m_net.Connect);
 	//shape.setRadius((100.f));
 	//shape.setFillColor(sf::Color::Green);
 }
@@ -89,6 +89,7 @@ void FileBoi::Process(const float &deltatime)
 {
 	ConBut->Update();
 	m_gui->Update();
+	m_data->m_net.Update();
 }
 
 void FileBoi::Present(const float &deltatime)

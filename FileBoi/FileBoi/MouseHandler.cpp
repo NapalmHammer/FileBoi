@@ -42,4 +42,5 @@ bool MouseHandler::GetClicked(sf::Mouse::Button button)
 	{
 		return m_RClicked;
 	}
+	return false;
 }

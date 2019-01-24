@@ -50,5 +50,6 @@ ConnectButton::ConnectButton(sf::Rect<float> rect, std::shared_ptr<ShareableAppl
 void ConnectButton::OnPress()
 {
 	std::cout << "[Connect BUTTON]Connect." << "\n";
+	this->m_SAD->m_net.Connect("127.0.0.1", 53000);
 	//FP();
 }
