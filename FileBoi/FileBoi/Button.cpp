@@ -4,14 +4,16 @@
 Button::Button(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname)
 	:m_SAD(SAD)
 {
-	this->m_rect.setFillColor(sf::Color(200,200,200,255));
+	//Button surface area
+	this->m_rect.setFillColor(m_surfaceColor);
 	this->m_rect.setOutlineThickness(1.0f);
 	this->m_rect.setPosition(rect.left, rect.top);
 	this->m_rect.setSize({ rect.width, rect.height });
 
+	//Button text attributes
 	this->m_text.setFont(this->m_SAD->SAD_assetManager->GetFont("OpenSans-Regular"));
 	this->m_text.setString(buttonname);
-	this->m_text.setFillColor(sf::Color(0, 0, 0, 255));
+	this->m_text.setFillColor(m_textColor);
 	this->m_text.setCharacterSize(12);
 	this->m_text.setPosition(rect.left + 25.0f, rect.top + 17.0f);
 }
@@ -47,7 +49,7 @@ ConnectButton::ConnectButton(sf::Rect<float> rect, std::shared_ptr<ShareableAppl
 
 void ConnectButton::OnPress()
 {
-	std::cout << "[Connect BUTTON]Connect." << "\n";
+	std::cout << "[Connect BUTTON]" << "\n";
 	this->m_SAD->m_net.Connect("127.0.0.1", 53000);
 }
 
@@ -57,6 +59,6 @@ DisconnectButton::DisconnectButton(sf::Rect<float> rect, std::shared_ptr<Shareab
 
 void DisconnectButton::OnPress()
 {
-	std::cout << "[Disconnect BUTTON]Disconnect." << "\n";
+	std::cout << "[Disconnect BUTTON]" << "\n";
 	this->m_SAD->m_net.Disconect();
 }

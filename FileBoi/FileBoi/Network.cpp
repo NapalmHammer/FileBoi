@@ -53,7 +53,6 @@ void Network::Update()
 		{
 			if (m_listener.accept(m_client) != sf::Socket::Done)
 			{
-				std::cout << "line 46 network.cpp \n";
 				break;
 			}
 			else 
