@@ -57,6 +57,9 @@
     <ClCompile Include="FileTransferData.cpp">
       <Filter>Source Files\Network</Filter>
     </ClCompile>
+    <ClCompile Include="FileBoiWidget.cpp">
+      <Filter>Source Files\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MouseHandler.h">
@@ -91,6 +94,9 @@
     </ClInclude>
     <ClInclude Include="PacketType.h">
       <Filter>Header Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="FileBoiWidget.h">
+      <Filter>Header Files\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

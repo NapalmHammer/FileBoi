@@ -15,7 +15,7 @@ void FileBoi::Init()
 	this->m_FPS = 60.0f;
 
 	this->m_data->SAD_assetManager->LoadFont("OpenSans-Regular", "OpenSans-Regular.ttf");
-	m_gui = std::make_unique<GUI>(sf::Rect<float>(100.0f, 100.0f, 400.0f, 400.0f), this->m_data);
+	m_gui = std::make_unique<GUI>(sf::Rect<float>(10.0f, 10.0f, 150.0f, 150.0f), this->m_data);
 
 	//-- Testing
 }

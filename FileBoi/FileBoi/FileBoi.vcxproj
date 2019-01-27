@@ -126,6 +126,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="FileBoi.cpp" />
+    <ClCompile Include="FileBoiWidget.cpp" />
     <ClCompile Include="FileTransferData.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="FileBoi.h" />
+    <ClInclude Include="FileBoiWidget.h" />
     <ClInclude Include="FileTransferData.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="AssetManager.h" />

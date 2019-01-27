@@ -3,7 +3,7 @@
 
 
 Console::Console(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD)
-	:Button(rect, SAD, NULL)
+	:FileBoiWidget(rect, SAD, "")
 {
 }
 
