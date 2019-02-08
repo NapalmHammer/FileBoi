@@ -38,6 +38,8 @@ void FileBoi::Go()
 
 void FileBoi::HandleEvents(sf::Event EVENT)
 {
+	//m_data->SAD_kbd.AddKey(sf::Keyboard::Unknown);
+
 	switch (EVENT.type)
 	{
 	case sf::Event::Closed :
@@ -69,10 +71,14 @@ void FileBoi::HandleEvents(sf::Event EVENT)
 		}
 		break;
 	}
-	default:
+	case sf::Event::TextEntered :
 	{
+		auto t = EVENT.text.unicode;
+		//std::cout << "key " << t << " was released. \n";
+		m_data->SAD_kbd.AddKey(t);
 		break;
 	}
+	default:{break;}
 	}
 }
 
