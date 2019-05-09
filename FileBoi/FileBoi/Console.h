@@ -10,7 +10,7 @@ public:
 	Console(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD);
 	void OnPress() override;
 	void Update() override;
-	sf::String GetString();
+	//sf::String GetString();
 private:
 	bool m_active = false;
 };

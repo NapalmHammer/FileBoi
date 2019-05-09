@@ -1,7 +1,7 @@
 #include "FileBoiWidget.h"
 
 
-FileBoiWidget::FileBoiWidget(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname)
+FileBoiWidget::FileBoiWidget(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD)
 	:m_SAD(SAD)
 {
 	//Button surface area
@@ -11,15 +11,15 @@ FileBoiWidget::FileBoiWidget(sf::Rect<float> rect, std::shared_ptr<ShareableAppl
 	this->m_rect.setSize({ rect.width, rect.height });
 
 	//Button text attributes
-	this->m_text.setFont(this->m_SAD->SAD_assetManager->GetFont("OpenSans-Regular"));
-	this->m_text.setString(buttonname);
-	this->m_text.setFillColor(m_textColor);
-	this->m_text.setCharacterSize(12);
-	this->m_text.setPosition(rect.left + 25.0f, rect.top + 17.0f);
+	//this->m_text.setFont(this->m_SAD->SAD_assetManager->GetFont("OpenSans-Regular"));
+	//this->m_text.setString(buttonname);
+	//this->m_text.setFillColor(m_textColor);
+	//this->m_text.setCharacterSize(12);
+	//this->m_text.setPosition(rect.left + 25.0f, rect.top + 17.0f);
 }
 
 void FileBoiWidget::Draw()
 {
 	m_SAD->SAD_window->Draw(this->m_rect);
-	m_SAD->SAD_window->Draw(this->m_text);
+	//m_SAD->SAD_window->Draw(this->m_text);
 }

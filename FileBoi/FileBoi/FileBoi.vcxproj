@@ -134,6 +134,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="MouseHandler.cpp" />
     <ClCompile Include="Network.cpp" />
+    <ClCompile Include="TextLine.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="Network.h" />
     <ClInclude Include="PacketType.h" />
     <ClInclude Include="SharedApplicationData.h" />
+    <ClInclude Include="TextLine.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
