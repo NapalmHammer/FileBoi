@@ -13,5 +13,4 @@ private:
 	sf::Rect<float> m_irect;
 	std::vector<std::unique_ptr<FileBoiWidget>> m_widgets;
 	std::shared_ptr<ShareableApplicationData> m_SAD;
-
 };

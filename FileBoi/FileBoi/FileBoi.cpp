@@ -16,6 +16,7 @@ void FileBoi::Init()
 
 	this->m_data->SAD_assetManager->LoadFont("OpenSans-Regular", "OpenSans-Regular.ttf");
 	m_gui = std::make_unique<GUI>(sf::Rect<float>(10.0f, 10.0f, 150.0f, 150.0f), this->m_data);
+	TL = std::make_unique<TextLine>(sf::Rect<float>(200.0f, 200.0f, 200.0f, 50.0f), this->m_data);
 
 	//-- Testing
 }
@@ -89,12 +90,14 @@ void FileBoi::Prepare(const float &deltatime)
 
 void FileBoi::Process(const float &deltatime)
 {
+	TL->Update();
 	m_gui->Update();
 	m_data->m_net.Update();
 }
 
 void FileBoi::Present(const float &deltatime)
 {
+	TL->Draw(*m_data->SAD_window);
 	m_gui->Draw();
 	this->m_data->SAD_window->GetWindow()->display();
 }

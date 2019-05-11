@@ -6,6 +6,7 @@ class FileBoiWidget
 public:
 	FileBoiWidget(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD);
 	virtual void Update() {};
+	
 	virtual void OnPress() {};
 	virtual void Draw();
 	void SetAreaColor(sf::Color c) { m_surfaceColor = c; };

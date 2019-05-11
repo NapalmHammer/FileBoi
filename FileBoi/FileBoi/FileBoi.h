@@ -4,6 +4,7 @@
 #include "SharedApplicationData.h"
 #include "Button.h"
 #include "GUI.h"
+#include "TextLine.h"
 
 //-- testing
 
@@ -29,6 +30,8 @@ private:
 	float m_FPS;
 	sf::Clock m_clock;
 	std::unique_ptr<GUI> m_gui;
+	std::unique_ptr<TextLine> TL;
+
 
 	//-- Testing members
 };
