@@ -134,6 +134,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="MouseHandler.cpp" />
     <ClCompile Include="Network.cpp" />
+    <ClCompile Include="SearchBox.cpp" />
     <ClCompile Include="TextLine.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="MouseHandler.h" />
     <ClInclude Include="Network.h" />
     <ClInclude Include="PacketType.h" />
+    <ClInclude Include="SearchBox.h" />
     <ClInclude Include="SharedApplicationData.h" />
     <ClInclude Include="TextLine.h" />
     <ClInclude Include="Window.h" />

@@ -30,7 +30,6 @@ private:
 	float m_FPS;
 	sf::Clock m_clock;
 	std::unique_ptr<GUI> m_gui;
-	std::unique_ptr<TextLine> TL;
 
 
 	//-- Testing members

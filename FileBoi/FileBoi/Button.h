@@ -5,8 +5,8 @@
 class Button : public FileBoiWidget
 {
 public:
-	Button(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname);
-	void Update() override;
+	Button(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname = "DEFAULT");
+	void Update(std::shared_ptr<ShareableApplicationData>& D) override;
 private:
 };
 

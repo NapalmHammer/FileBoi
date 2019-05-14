@@ -16,9 +16,11 @@ void FileBoi::Init()
 
 	this->m_data->SAD_assetManager->LoadFont("OpenSans-Regular", "OpenSans-Regular.ttf");
 	m_gui = std::make_unique<GUI>(sf::Rect<float>(10.0f, 10.0f, 150.0f, 150.0f), this->m_data);
-	TL = std::make_unique<TextLine>(sf::Rect<float>(200.0f, 200.0f, 200.0f, 50.0f), this->m_data);
 
 	//-- Testing
+
+	//Flushing key history: TODO: Make dedicated FLUSH function
+	m_data->SAD_kbd.FlushKey();
 }
 
 void FileBoi::Go()
@@ -72,32 +74,47 @@ void FileBoi::HandleEvents(sf::Event EVENT)
 		}
 		break;
 	}
+	case sf::Event::KeyPressed :
+	{
+		std::cout << "system:" << EVENT.key.code << std::endl;
+		if (EVENT.key.code == sf::Keyboard::Escape)
+		{
+			std::cout << "the escape key was pressed" << std::endl;
+			std::cout << "control:" << EVENT.key.control << std::endl;
+			std::cout << "alt:" << EVENT.key.alt << std::endl;
+			std::cout << "shift:" << EVENT.key.shift << std::endl;
+			std::cout << "system:" << EVENT.key.system << std::endl;
+		}
+		break;
+	}
 	case sf::Event::TextEntered :
 	{
 		auto t = EVENT.text.unicode;
-		//std::cout << "key " << t << " was released. \n";
+		std::cout << "key " << t << " was released. \n";
 		m_data->SAD_kbd.AddKey(t);
 		break;
 	}
-	default:{break;}
+	default:
+	{
+		break;
+	}
 	}
 }
 
 void FileBoi::Prepare(const float &deltatime)
 {
-	this->m_data->SAD_window->GetWindow()->clear(sf::Color::White);
+	this->m_data->SAD_window->GetWindow()->clear(sf::Color::Black);
 }
 
 void FileBoi::Process(const float &deltatime)
 {
-	TL->Update();
-	m_gui->Update();
+	m_gui->Update(this->m_data);
 	m_data->m_net.Update();
+	m_data->SAD_kbd.FlushKey();
 }
 
 void FileBoi::Present(const float &deltatime)
 {
-	TL->Draw(*m_data->SAD_window);
-	m_gui->Draw();
+	m_gui->Draw(this->m_data->SAD_window);
 	this->m_data->SAD_window->GetWindow()->display();
 }

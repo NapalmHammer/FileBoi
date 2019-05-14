@@ -13,7 +13,7 @@ void Console::OnPress()
 	m_active = true;
 }
 
-void Console::Update()
+void Console::Update(std::shared_ptr<ShareableApplicationData>& SAD)
 {
 	if (this->m_rect.getGlobalBounds().contains((sf::Vector2f)sf::Mouse::getPosition(*m_SAD->SAD_window->GetWindow())))
 	{
