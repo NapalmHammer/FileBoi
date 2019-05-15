@@ -26,6 +26,7 @@ void TextLine::Update(std::shared_ptr<ShareableApplicationData>& D)
 		if (D->SAD_ms.GetClicked(sf::Mouse::Button::Left))
 		{
 			m_IsActive = true;
+			this->m_text.setStyle(sf::Text::Underlined);
 			//this->OnPress();
 			D->SAD_ms.Released(sf::Mouse::Button::Left);
 		}
@@ -35,9 +36,11 @@ void TextLine::Update(std::shared_ptr<ShareableApplicationData>& D)
 		if (D->SAD_ms.GetClicked(sf::Mouse::Button::Left))
 		{
 			m_IsActive = false;
+			this->m_text.setStyle(sf::Text::Regular);
 			D->SAD_ms.Released(sf::Mouse::Button::Left);
 		}
-		this->m_text.setStyle(sf::Text::Regular);
+		if(!m_IsActive)
+			this->m_text.setStyle(sf::Text::Regular);
 		this->m_rect.setOutlineColor(sf::Color(150, 150, 150, 255));
 	}
 
@@ -49,19 +52,48 @@ void TextLine::Update(std::shared_ptr<ShareableApplicationData>& D)
 		if (t != sf::Keyboard::Key::Unknown)
 		{
 			std::string temp = m_text.getString();
-			if (t == '\b')
+			switch (t)
+			{
+			case '\b':
 			{
 				if (!temp.empty())
 				{
-				temp.pop_back();
-				m_text.setString(temp);
+					temp.pop_back();
+					m_text.setString(temp);
 				}
+				break;
 			}
-			else
+			case 59:
+			{
+				std::cout << "nope59 \n";
+				break;
+			}
+			case 13:
+			{
+				std::cout << "Searching... \n";
+				m_text.setString("");
+				break;
+			}
+			default:
 			{
 				temp.push_back(t);
 				m_text.setString(temp);
+				break;
 			}
+			}
+			//if (t == '\b')
+			//{
+			//	if (!temp.empty())
+			//	{
+			//	temp.pop_back();
+			//	m_text.setString(temp);
+			//	}
+			//}
+			//else
+			//{
+			//	temp.push_back(t);
+			//	m_text.setString(temp);
+			//}
 		}
 	}
 }

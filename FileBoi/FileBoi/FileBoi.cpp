@@ -84,6 +84,7 @@ void FileBoi::HandleEvents(sf::Event EVENT)
 			std::cout << "alt:" << EVENT.key.alt << std::endl;
 			std::cout << "shift:" << EVENT.key.shift << std::endl;
 			std::cout << "system:" << EVENT.key.system << std::endl;
+			this->m_data->SAD_window->GetWindow()->close();
 		}
 		break;
 	}
