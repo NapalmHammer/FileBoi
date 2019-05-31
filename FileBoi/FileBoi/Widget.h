@@ -1,14 +1,14 @@
 #pragma once
 #include "SharedApplicationData.h"
 
-class FileBoiWidget
+class Widget
 {
 public:
-	FileBoiWidget() = default;
-	FileBoiWidget(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD);
+	Widget() = default;
+	Widget(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD);
 	virtual void Update(std::shared_ptr<ShareableApplicationData>& D) {};
 	
-	virtual void OnPress() { std::cout << "pressed \n"; };
+	virtual void OnPress() { std::cout << "TO DO: ERASE THESE MESSAGES \n"; };
 	virtual void Draw(std::shared_ptr<Window> & W);
 	void SetAreaColor(sf::Color c) { m_surfaceColor = c; };
 	void SetTextColor(sf::Color c) { m_textColor = c; };

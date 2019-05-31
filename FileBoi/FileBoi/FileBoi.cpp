@@ -41,7 +41,6 @@ void FileBoi::Go()
 
 void FileBoi::HandleEvents(sf::Event EVENT)
 {
-	//m_data->SAD_kbd.AddKey(sf::Keyboard::Unknown);
 
 	switch (EVENT.type)
 	{
@@ -76,7 +75,7 @@ void FileBoi::HandleEvents(sf::Event EVENT)
 	}
 	case sf::Event::KeyPressed :
 	{
-		std::cout << "system:" << EVENT.key.code << std::endl;
+		//std::cout << "system:" << EVENT.key.code << std::endl;
 		if (EVENT.key.code == sf::Keyboard::Escape)
 		{
 			std::cout << "the escape key was pressed" << std::endl;
@@ -91,7 +90,7 @@ void FileBoi::HandleEvents(sf::Event EVENT)
 	case sf::Event::TextEntered :
 	{
 		auto t = EVENT.text.unicode;
-		std::cout << "key " << t << " was released. \n";
+		//std::cout << "key " << t << " was released. \n";
 		m_data->SAD_kbd.AddKey(t);
 		break;
 	}
@@ -104,7 +103,7 @@ void FileBoi::HandleEvents(sf::Event EVENT)
 
 void FileBoi::Prepare(const float &deltatime)
 {
-	this->m_data->SAD_window->GetWindow()->clear(sf::Color::Black);
+	this->m_data->SAD_window->GetWindow()->clear(sf::Color(100,100,100,255));
 }
 
 void FileBoi::Process(const float &deltatime)
@@ -112,6 +111,7 @@ void FileBoi::Process(const float &deltatime)
 	m_gui->Update(this->m_data);
 	m_data->m_net.Update();
 	m_data->SAD_kbd.FlushKey();
+	m_data->SAD_ms.Released(sf::Mouse::Button::Left);
 }
 
 void FileBoi::Present(const float &deltatime)

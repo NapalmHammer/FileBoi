@@ -3,67 +3,42 @@
 
 
 Console::Console(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD)
-	:FileBoiWidget(rect, SAD)
+	:Widget(rect, SAD),
+	m_TL({rect.left + 5.0f, rect.top + rect.height - 30, rect.width - 10.0f, 25.0f }, SAD, true)
 {
+	m_rect.setOutlineThickness(3.0f);
+	m_rect.setOutlineColor(sf::Color::Blue);
 	SetAreaColor(sf::Color::Black);
-}
-
-void Console::OnPress()
-{
-	m_active = true;
+	m_text.setFont(SAD->SAD_assetManager->GetFont("OpenSans-Regular"));
+	m_startingTextPos = { rect.left + 5.0f,  rect.top + rect.height - 50 };
+	this->m_text.setString("");
+	this->m_text.setFillColor(m_textColor);
+	this->m_text.setCharacterSize(20);
+	this->m_text.setPosition(rect.left, rect.top + rect.height - 20);
+	m_logptr = &SAD->m_log;
+	m_logptr->AddString("this is a test beep beep");
 }
 
 void Console::Update(std::shared_ptr<ShareableApplicationData>& SAD)
 {
-	if (this->m_rect.getGlobalBounds().contains((sf::Vector2f)sf::Mouse::getPosition(*m_SAD->SAD_window->GetWindow())))
+	m_TL.Update(SAD);
+	if (m_TL.GetReady())
 	{
-		//this->m_text.setStyle(sf::Text::Underlined);
-		this->m_rect.setOutlineColor(sf::Color(100, 100, 100, 255));
-		if (this->m_SAD->SAD_ms.GetClicked(sf::Mouse::Button::Left))
-		{
-			this->OnPress();
-			this->m_SAD->SAD_ms.Released(sf::Mouse::Button::Left);
-		}
-	}
-	else
-	{
-		if (this->m_SAD->SAD_ms.GetClicked(sf::Mouse::Button::Left))
-		{
-			m_active = false;
-			this->m_SAD->SAD_ms.Released(sf::Mouse::Button::Left);
-		}
-		//this->m_text.setStyle(sf::Text::Regular);
-		this->m_rect.setOutlineColor(sf::Color(150, 150, 150, 255));
-	}
-
-
-	if (m_active)
-	{
-		auto t = m_SAD->SAD_kbd.GetKey();
-
-		if (t != sf::Keyboard::Key::Unknown)
-		{
-			//std::string temp = m_text.getString();
-			if (t == '\b')
-			{
-				/*if (!temp.empty())
-				{
-					temp.pop_back();
-					m_text.setString(temp);
-				}*/
-			}
-			else
-			{
-				//temp.push_back(t);
-				//m_text.setString(temp);
-			}
-		}
+		m_logptr->AddString(m_TL.GetString());
 	}
 }
 
-//sf::String Console::GetString()
-//{
-//	sf::String temp = m_text.getString();
-//	m_text.setString("");
-//	return temp;
-//}
+void Console::Draw(std::shared_ptr<Window>& W)
+{
+	Widget::Draw(W);
+	m_TL.Draw(W);
+	m_text.setPosition(m_startingTextPos);
+	for (auto i = (m_logptr->GetBuffer().size() - 1); i >= 0; --i)
+	{
+		m_text.setString(m_logptr->GetBuffer()[i]);
+		m_text.move({ 0.0f, -20 });
+		W->Draw(m_text);
+		if (i == 0)
+			return;
+	}
+}
