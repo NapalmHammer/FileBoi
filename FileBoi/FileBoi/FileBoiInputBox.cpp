@@ -11,7 +11,7 @@ void SelectFileIB::Update(std::shared_ptr<ShareableApplicationData>& D)
 	InputBox::Update(D);
 	if (m_tl->GetReady())
 	{
-		m_FM->CheckFile(m_tl->GetString());
+		D->m_FM.CheckFile(m_tl->GetString());
 	}
 }
 
@@ -26,12 +26,12 @@ void IPIB::Update(std::shared_ptr<ShareableApplicationData>& D)
 	if (m_tl->GetReady())
 	{
 		auto temp = m_tl->GetString();
-		std::cout << "attempting conection to IP: " << temp << "\n";
+		D->m_log.AddString("attempting conection to IP: " + temp);
 		for (auto i = 0; i < temp.size(); ++i)
 		{
 			if (isalpha(temp[i]))
 			{
-				std::cout << "IP addresses should be numeric only. \n";
+				D->m_log.AddString("IP addresses should be numeric only.");
 				return;
 			}
 		}

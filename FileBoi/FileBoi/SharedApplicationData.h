@@ -5,15 +5,17 @@
 #include "KeyboardHandler.h"
 #include "Network.h"
 #include "Log.h"
+#include "FileManager.h"
 
 struct ShareableApplicationData
 {
+	Log m_log;
 	Network m_net;
 	KeyboardHandler SAD_kbd;
 	MouseHandler SAD_ms;
-	Log m_log;
 	sf::Event SAD_event;
 	std::shared_ptr<Window> SAD_window;
 	std::shared_ptr<AssetManager> SAD_assetManager;
+	FileManager m_FM;
 	
 };

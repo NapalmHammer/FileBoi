@@ -10,11 +10,13 @@ void FileBoi::Init()
 	this->m_data = std::make_shared<ShareableApplicationData>();
 	this->m_data->SAD_window = std::make_shared<Window>();
 	this->m_data->SAD_assetManager = std::make_shared<AssetManager>();
+	this->m_data->SAD_assetManager->LoadFont("OpenSans-Regular", "OpenSans-Regular.ttf");
+	this->m_data->m_net.Init(&this->m_data->m_log);
+	this->m_data->m_FM.Init(&this->m_data->m_log);
 
 	this->m_deltaTime = 0.0f;
 	this->m_FPS = 60.0f;
 
-	this->m_data->SAD_assetManager->LoadFont("OpenSans-Regular", "OpenSans-Regular.ttf");
 	m_gui = std::make_unique<GUI>(sf::Rect<float>(10.0f, 10.0f, 150.0f, 150.0f), this->m_data);
 
 	//-- Testing

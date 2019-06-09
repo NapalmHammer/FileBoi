@@ -3,6 +3,7 @@
 #include <fstream>
 #include <experimental/filesystem>
 #include <iostream>
+#include "Log.h"
 
 class FileManager
 {
@@ -11,11 +12,17 @@ public:
 	{
 		if (!std::experimental::filesystem::exists(fileName))
 		{
-			std::cout << "file " << fileName << " does not exist \n";
+			m_logptr->AddString("file " + fileName + " does not exist.");
 		}
 		else
 		{
-			std::cout << "success! \n";
+			m_logptr->AddString("success!");
 		}
 	}
+	void Init(Log* L) 
+	{ 
+		m_logptr = L; 
+	}
+private:
+	Log * m_logptr;
 };

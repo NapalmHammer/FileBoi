@@ -37,7 +37,6 @@ void TextLine::Update(std::shared_ptr<ShareableApplicationData>& D)
 		{
 			m_IsActive = true;
 			this->m_text.setStyle(sf::Text::Underlined);
-			D->m_log.AddString("textline");
 			
 			//this->OnPress();
 		}
@@ -74,7 +73,7 @@ void TextLine::Update(std::shared_ptr<ShareableApplicationData>& D)
 			}
 			case 59:
 			{
-				std::cout << "nope59 \n";
+				D->m_log.AddString("nope59 \n");
 				break;
 			}
 			case 13:

@@ -2,7 +2,6 @@
 //#include "FileBoiWidget.h"
 #include "Button.h"
 #include "TextLine.h"
-#include "FileManager.h"
 
 class InputBox : public Widget
 {
@@ -13,5 +12,4 @@ public:
 protected:
 	std::unique_ptr<TextLine> m_tl;
 	std::unique_ptr<Button> m_btn;
-	std::unique_ptr<FileManager> m_FM;
 };
