@@ -13,5 +13,4 @@ public:
 	sf::String GetString();
 private:
 	bool m_active = false;
-
 };
