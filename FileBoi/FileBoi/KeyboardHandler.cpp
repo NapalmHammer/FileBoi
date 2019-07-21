@@ -14,6 +14,6 @@ void KeyboardHandler::AddKey(sf::Uint32 k)
 sf::Uint32 KeyboardHandler::GetKey()
 {
 	auto temp = m_key;
-	m_key = sf::Keyboard::Unknown;
+	FlushKey();
 	return temp;
 }

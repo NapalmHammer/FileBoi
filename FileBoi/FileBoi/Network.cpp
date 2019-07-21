@@ -19,16 +19,16 @@ void Network::Connect(sf::IpAddress address, sf::Int32 port)
 	{
 		if (!this->m_client.connect(address, port))
 		{
-			std::cout << "Could not connect to address: " + address.toString() + "\n";
+			m_logptr->AddString("Could not connect to address: " + address.toString());
 		}
 		else
 		{
-			std::cout << "Connected to address: " + address.toString() + "\n";
+			m_logptr->AddString("Connected to address: " + address.toString());
 		}
 	}
 	else 
 	{
-		std::cout << "Socket Already connected: " + address.toString() + "\n";
+		m_logptr->AddString("Socket Already connected: " + address.toString());
 	}
 
 }
@@ -36,7 +36,7 @@ void Network::Connect(sf::IpAddress address, sf::Int32 port)
 void Network::Disconect()
 {
 	m_client.disconnect();
-	std::cout << "Disconnected \n";
+	m_logptr->AddString("Disconnected");
 
 }
 
@@ -57,7 +57,7 @@ void Network::Update()
 			}
 			else 
 			{
-				std::cout << "Someone has connected to you. \n";
+				m_logptr->AddString("Someone has connected to you.");
 				m_status = NetworkStatus::Connected;
 				break;
 			}

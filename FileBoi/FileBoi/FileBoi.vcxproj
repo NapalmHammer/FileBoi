@@ -126,7 +126,10 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Console.cpp" />
     <ClCompile Include="FileBoi.cpp" />
-    <ClCompile Include="FileBoiWidget.cpp" />
+    <ClCompile Include="FileBoiButtons.cpp" />
+    <ClCompile Include="FileBoiInputBox.cpp" />
+    <ClCompile Include="Widget.cpp" />
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="FileTransferData.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="KeyboardHandler.cpp" />
@@ -134,13 +137,19 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="MouseHandler.cpp" />
     <ClCompile Include="Network.cpp" />
+    <ClCompile Include="InputBox.cpp" />
+    <ClCompile Include="TextLine.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="FileBoi.h" />
-    <ClInclude Include="FileBoiWidget.h" />
+    <ClInclude Include="FileBoiButtons.h" />
+    <ClInclude Include="FileBoiInputBox.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="Widget.h" />
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="FileTransferData.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="AssetManager.h" />
@@ -148,7 +157,9 @@
     <ClInclude Include="MouseHandler.h" />
     <ClInclude Include="Network.h" />
     <ClInclude Include="PacketType.h" />
+    <ClInclude Include="InputBox.h" />
     <ClInclude Include="SharedApplicationData.h" />
+    <ClInclude Include="TextLine.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

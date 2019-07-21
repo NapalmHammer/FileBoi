@@ -1,12 +1,14 @@
 #include "Button.h"
 
 Button::Button(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname)
-	:FileBoiWidget(rect, SAD, buttonname)
+	:Widget(rect, SAD)
 {
-
+	m_text.setString(buttonname);
+	//std::cout << "char size: " << m_text.getCharacterSize() << "\n";
+	//std::cout << "button height: " << m_rect.getPosition().y << " " << m_rect.getSize().y << " " << m_rect.getSize().y - m_rect.getPosition().y << "\n";
 }
 
-void Button::Update()
+void Button::Update(std::shared_ptr<ShareableApplicationData>& D)
 {
 	if (this->m_rect.getGlobalBounds().contains((sf::Vector2f)sf::Mouse::getPosition(*m_SAD->SAD_window->GetWindow())))
 	{
@@ -25,22 +27,3 @@ void Button::Update()
 	}
 }
 
-ConnectButton::ConnectButton(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname)
-	:Button(rect, SAD, buttonname)
-{}
-
-void ConnectButton::OnPress()
-{
-	std::cout << "[Connect BUTTON]" << "\n";
-	this->m_SAD->m_net.Connect("127.0.0.1", 53000);
-}
-
-DisconnectButton::DisconnectButton(sf::Rect<float> rect, std::shared_ptr<ShareableApplicationData>& SAD, std::string buttonname)
-	:Button(rect, SAD, buttonname)
-{}
-
-void DisconnectButton::OnPress()
-{
-	std::cout << "[Disconnect BUTTON]" << "\n";
-	this->m_SAD->m_net.Disconect();
-}

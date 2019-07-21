@@ -2,6 +2,7 @@
 #include <SFML/Network.hpp>
 #include "FileTransferData.h"
 #include <iostream>
+#include "Log.h"
 
 enum class NetworkStatus
 {
@@ -16,6 +17,10 @@ class Network
 public:
 	Network();
 	~Network();
+	void Init(Log* L)
+	{
+		m_logptr = L;
+	}
 	void Connect(sf::IpAddress address, sf::Int32 port);
 	void Disconect();
 	void Update();
@@ -27,5 +32,6 @@ private:
 	sf::TcpSocket m_client;
 	sf::Int32 m_bufferSize = 16384;
 	NetworkStatus m_status = NetworkStatus::NotConnected;
+	Log* m_logptr;
 };
 
